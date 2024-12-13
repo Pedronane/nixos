@@ -1,42 +1,48 @@
 {
-	description = "Nixos config flake";
+  description = "My system configuration";
 
-	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+  inputs = {
 
-		home-manager = {
-			url = "github:nix-community/home-manager";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-		hyprland.url = "github:hyprwm/Hyprland";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
 
-		hyprland-plugins = {
-			url = "github:hyprwm/hyprland-plugins";
-			inputs.hyprland.follows = "hyprland";
-		};
-	};
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-	outputs = { self, nixpkgs, ... }@inputs: 
-		let 
-		system = "x86_64-linux";
-	pkgs = nixpkgs.legacyPackages.${system};
-	in
-	{
-		nixosConfigurations = { 
-			pietro = nixpkgs.lib.nixosSystem {
-				specialArgs = {inherit inputs;};
-				modules = [
-					./hosts/pietro/configuration.nix
-					inputs.home-manager.nixosModules.default
-				];
-			};
-			laptop = nixpkgs.lib.nixosSystem {
-				specialArgs = {inherit inputs;};
-				modules = [
-					./hosts/laptop/configuration.nix
-					inputs.home-manager.nixosModules.default
-				];
-			};
-		};
-	};
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    polymc.url = "github:PolyMC/PolyMC";
+  };
+
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
+
+    let
+      system = "x86_64-linux";
+    in {
+
+    # nixos - system hostname
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        pkgs-stable = import nixpkgs-stable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        inherit inputs system;
+      };
+      modules = [
+        ./nixos/configuration.nix
+        inputs.nixvim.nixosModules.nixvim
+      ];
+    };
+
+    homeConfigurations.pietro = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.${system};
+      modules = [ ./home-manager/home.nix ];
+    };
+  };
 }
