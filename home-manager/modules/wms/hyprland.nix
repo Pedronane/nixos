@@ -101,8 +101,8 @@
       ];
 
       exec-once = [
-        "swww-daemon"
         "swww img ~/Pictures/Wallpapers/wallpaper.png"
+        "swww-daemon"
         "waybar"
       ];
 

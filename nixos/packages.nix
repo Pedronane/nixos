@@ -9,7 +9,7 @@
     kitty
     rofi-wayland
     mpv
-    discord
+    (discord.override {withVencord = true;}) # vencord
     obsidian
     firefox
     discord
