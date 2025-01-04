@@ -7,8 +7,7 @@
       "$mainMod" = "SUPER";
 
       monitor = [
-        "DP-1, 1920x1080@165 , 0x0, 1"
-        "HDMI-A-1, 1920x1080@60 , -1920x0, 1"
+        "eDp-1, 1920x1080@60 , 0x0, 1"
       ];
       env = [
         "XDG_CURRENT_DESKTOP,Hyprland"
@@ -38,8 +37,8 @@
 
       general = {
         gaps_in = 5;
-        gaps_out = 20;
-        border_size = 3;
+        gaps_out = 10;
+        border_size = 2;
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
 
@@ -51,10 +50,10 @@
         rounding = 10;
 
         blur = {
-          enabled = true;
-          size = 16;
-          passes = 2;
-          new_optimizations = true;
+          enabled = false;
+          # size = 16;
+          # passes = 2;
+          # new_optimizations = true;
         };
 
       };
@@ -83,7 +82,7 @@
       gestures = {
         workspace_swipe = true;
         workspace_swipe_fingers = 3;
-        workspace_swipe_invert = false;
+        workspace_swipe_invert = true;
         workspace_swipe_distance = 200;
         workspace_swipe_forever = true;
       };

@@ -30,6 +30,7 @@
     htop
     ntfs3g
     swww
+    yazi
 
     # Xorg stuff
     #xterm

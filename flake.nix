@@ -17,6 +17,7 @@
     };
 
     polymc.url = "github:PolyMC/PolyMC";
+
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:

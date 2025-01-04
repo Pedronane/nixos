@@ -1,4 +1,4 @@
-{ inputs, config, ...}: {
+{ inputs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./packages.nix
@@ -31,21 +31,6 @@
 
   system.stateVersion = "24.11"; # Don't change
 
-  # Nvidia
-  hardware = {
-    nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
-    graphics.enable = true;
-    nvidia.modesetting.enable = true;
-    nvidia.powerManagement.enable = false;
-    nvidia.powerManagement.finegrained = false;
-    nvidia.open = false;
-    nvidia.nvidiaSettings = true;
-  };
-
-}
-
-
-
 # xdg portal 
 #  xdg.portal.enable = true;
 #  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
@@ -55,5 +40,6 @@
 #	  extraSpecialArgs = {inherit inputs;};
 #	  users = {
 #		  "pietro" = import ../home-manager/home.nix;
+  # };
 #	  };
-# };
+}

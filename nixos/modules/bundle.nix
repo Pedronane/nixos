@@ -5,7 +5,6 @@
     ./env.nix
     ./hyprland.nix
     ./nm.nix
-    ./nvidia.nix
     ./sddm.nix
     ./tailscale.nix
     ./user.nix
