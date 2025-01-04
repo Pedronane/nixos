@@ -15,6 +15,7 @@
     discord
     dolphin
     thunderbird
+    ghostty
 
     # Coding stuff
     gcc

@@ -101,13 +101,13 @@
       ];
 
       exec-once = [
-        "swww init"
-        "swww img ~/Wallpapers/wallpaper.png"
+        "swww-daemon"
+        "swww img ~/Pictures/Wallpapers/wallpaper.png"
         "waybar"
       ];
 
       bind = [
-        "$mainMod, Return, exec, kitty"
+        "$mainMod, Return, exec, ghostty"
         "$mainMod, Q, killactive,"
         "$mainMod, M, exit,"
         "$mainMod, E, exec, dolphin"
