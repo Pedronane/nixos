@@ -9,8 +9,7 @@
 
   programs.nixvim = {
     enable = true;
-
+    colorschemes.gruvbox.enable = true;
     defaultEditor = true;
-    colorschemes.oxocarbon.enable = true;
   };
 }
