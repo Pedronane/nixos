@@ -9,6 +9,5 @@
     ./tailscale.nix
     ./user.nix
     ./nixvim/nixvim.nix
-    ./hyprpanel.nix
   ];
 }
