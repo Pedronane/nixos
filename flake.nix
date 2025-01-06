@@ -18,8 +18,6 @@
 
     polymc.url = "github:PolyMC/PolyMC";
 
-    hyprpanel.url = "github:jas-singhfsu/hyprpanel";
-
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:

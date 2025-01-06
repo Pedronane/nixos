@@ -16,6 +16,8 @@
     dolphin
     thunderbird
     ghostty
+    polymc
+
 
     # Coding stuff
     gcc
@@ -62,5 +64,6 @@
 
   fonts.packages = with pkgs; [
     jetbrains-mono
+    otf-font-awesome
   ];
 }

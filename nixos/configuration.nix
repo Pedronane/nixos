@@ -14,6 +14,7 @@
 
   time.timeZone = "Europe/Rome"; # Set your time zone.
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "it_IT.UTF-8";
@@ -30,16 +31,4 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; # Enabling flakes
 
   system.stateVersion = "24.11"; # Don't change
-
-# xdg portal 
-#  xdg.portal.enable = true;
-#  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-
-# home-manager = {
-#	  # also pass inputs to home-manager modules
-#	  extraSpecialArgs = {inherit inputs;};
-#	  users = {
-#		  "pietro" = import ../home-manager/home.nix;
-  # };
-#	  };
 }
