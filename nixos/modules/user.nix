@@ -1,15 +1,13 @@
-{ pkgs, ... }: {
+{ pkgs, user, ... }: {
   programs.zsh.enable = true;
 
   users = {
     defaultUserShell = pkgs.zsh;
-
-    users.pietro = {
+    users.${user} = {
       isNormalUser = true;
-      description = "Pietro";
-      extraGroups = [ "networkmanager" "wheel" "input" "libvirtd" ];
-      packages = with pkgs; [];
+      extraGroups = [ "wheel" "networkmanager" ];
     };
   };
 
+  services.getty.autologinUser = user;
 }

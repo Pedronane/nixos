@@ -4,45 +4,52 @@
   inputs = {
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    stylix.url = "github:danth/stylix";
 
-    polymc.url = "github:PolyMC/PolyMC";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: let
+    system = "x86_64-linux";
+    homeStateVersion = "24.11";
+    user = "pietro";
+    hosts = [
+      { hostname = "pietro"; stateVersion = "24.11"; }
+    ];
 
-    let
-      system = "x86_64-linux";
-    in {
-
-    # nixos - system hostname
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+    makeSystem = { hostname, stateVersion }: nixpkgs.lib.nixosSystem {
+      system = system;
       specialArgs = {
-        pkgs-stable = import nixpkgs-stable {
-          inherit system;
-          config.allowUnfree = true;
-        };
-        inherit inputs system;
+        inherit inputs stateVersion hostname user;
       };
+
       modules = [
-        ./nixos/configuration.nix
-        inputs.nixvim.nixosModules.nixvim
+        ./hosts/${hostname}/configuration.nix
       ];
     };
 
-    homeConfigurations.pietro = home-manager.lib.homeManagerConfiguration {
+  in {
+    nixosConfigurations = nixpkgs.lib.foldl' (configs: host:
+      configs // {
+        "${host.hostname}" = makeSystem {
+          inherit (host) hostname stateVersion;
+        };
+      }) {} hosts;
+
+    homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
-      modules = [ ./home-manager/home.nix ];
+      extraSpecialArgs = {
+        inherit inputs homeStateVersion user;
+      };
+
+      modules = [
+        ./home-manager/home.nix
+      ];
     };
   };
 }
