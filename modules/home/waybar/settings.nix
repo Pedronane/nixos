@@ -21,7 +21,7 @@ let
 in
 {
   programs.waybar.settings.mainBar = with custom; {
-    position = "bottom";
+    position = "top";
     layer = "top";
     height = 28;
     margin-top = 0;
@@ -61,24 +61,20 @@ in
       format = "{icon}";
       on-click = "activate";
       format-icons = {
-        "1" = "I";
-        "2" = "II";
-        "3" = "III";
-        "4" = "IV";
-        "5" = "V";
-        "6" = "VI";
-        "7" = "VII";
-        "8" = "VIII";
-        "9" = "IX";
-        "10" = "X";
+        "1" = "";
+        "2" = "";
+        "3" = "";
+        "4" = "";
+        "5" = "";
+        "6" = "";
+        "7" = "";
+        "8" = "";
+        "9" = "";
+        "10" = "";
         sort-by-number = true;
       };
       persistent-workspaces = {
-        "1" = [ ];
-        "2" = [ ];
-        "3" = [ ];
-        "4" = [ ];
-        "5" = [ ];
+        "*" = 9;
       };
     };
     cpu = {
@@ -140,9 +136,10 @@ in
       tooltip-format = "{time}";
     };
     "hyprland/language" = {
-      format = "<span foreground='#FABD2F'> </span> {}";
-      format-fr = "FR";
-      format-en = "US";
+      format-en = "🇺🇸";
+      format-it = "🇮🇹";
+      min-lenght = 5;
+      tooltip = false;
     };
     "custom/launcher" = {
       format = "";
