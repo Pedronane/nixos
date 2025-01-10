@@ -19,7 +19,7 @@
     homeStateVersion = "24.11";
     user = "pietro";
     hosts = [
-      { hostname = "pietro"; stateVersion = "24.11"; }
+      { hostname = "pietro"; stateVersion = "unstable"; }
     ];
 
     makeSystem = { hostname, stateVersion }: nixpkgs.lib.nixosSystem {
