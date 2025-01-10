@@ -57,7 +57,7 @@ in
     yt-dlp-light
     xdg-utils
     xxd
-    jetbrains.idea-community-bin
+
     ## CLI 
     cbonsai                           # terminal screensaver
     cmatrix
