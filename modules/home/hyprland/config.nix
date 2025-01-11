@@ -58,7 +58,7 @@
       };
 
       dwindle = {
-        # no_gaps_when_only = false;
+        # no_gaps_when_only = 0;
         force_split = 0;
         special_scale_factor = 1.0;
         split_width_multiplier = 1.0;
@@ -70,7 +70,7 @@
       master = {
         new_status = "master";
         special_scale_factor = 1;
-        # no_gaps_when_only = false;
+        # no_gaps_when_only = 0;
       };
 
       decoration = {
@@ -300,15 +300,12 @@
         "opacity 1.0 override 1.0 override, class:(Unity)"
         "opacity 1.0 override 1.0 override, class:(zen)"
         "opacity 1.0 override 1.0 override, class:(evince)"
-        "workspace 1, class:^(zen)$"
-        "workspace 3, class:^(evince)$"
-        "workspace 4, class:^(Gimp-2.10)$"
-        "workspace 4, class:^(Aseprite)$"
-        "workspace 5, class:^(Audacious)$"
-        "workspace 5, class:^(Spotify)$"
-        "workspace 8, class:^(com.obsproject.Studio)$"
-        "workspace 10, class:^(discord)$"
-        "workspace 10, class:^(WebCord)$"
+        "workspace 3, class:^(obsidian)$"
+        "workspace 4, class:^(aseprite)$"
+        "workspace 5, class:^(vesktop)$"
+	"workspace 6, class:^(teams-for-linux)$"
+	"workspace 8, class:^(audacious)$"
+        "workspace 8, class:^(spotify)$"
         "idleinhibit focus, class:^(mpv)$"
         "idleinhibit fullscreen, class:^(firefox)$"
         "float,class:^(org.gnome.Calculator)$"

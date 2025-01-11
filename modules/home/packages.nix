@@ -82,6 +82,7 @@ in
     winetricks
     wineWowPackages.wayland
     zenity
+    teams-for-linux
 
     # C / C++
     gcc
