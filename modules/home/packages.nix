@@ -68,6 +68,7 @@ in
     ## GUI Apps
     audacity
     bleachbit                         # cache cleaner
+    firefox
     gimp
     libreoffice
     nix-prefetch-github
@@ -83,6 +84,8 @@ in
     wineWowPackages.wayland
     zenity
     teams-for-linux
+    jetbrains.idea-community-bin
+    scenebuilder
 
     # C / C++
     gcc
